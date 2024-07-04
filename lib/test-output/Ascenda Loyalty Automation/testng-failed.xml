@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Ascenda Loyalty Automation]">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="tests.TestRunner">
+        <methods>
+          <include name="intitconfig"/>
+          <include name="validateRemainingPointsBalanceWithGetUserInfoResponse"/>
+          <include name="wrapAllUp"/>
+          <include name="globalSetup"/>
+          <include name="initializeCreateMagicLink"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- tests.TestRunner -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Ascenda Loyalty Automation] -->

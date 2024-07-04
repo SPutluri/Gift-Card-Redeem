@@ -1,0 +1,44 @@
+plugins {
+    id 'java-library'
+}
+
+group 'org.Ascendaloyalty'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    api 'org.apache.commons:commons-math3:3.6.1'
+    implementation 'com.google.guava:guava:31.1-jre'
+    testImplementation 'io.rest-assured:rest-assured:4.5.0'
+    testImplementation 'org.testng:testng:7.7.1'
+    implementation 'commons-configuration:commons-configuration:1.10'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+    testCompileOnly 'org.projectlombok:lombok:1.18.28'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.11.0'
+    implementation 'com.relevantcodes:extentreports:2.41.2'
+    implementation 'org.simplejavamail:simple-java-mail:5.1.1'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.5.3'
+    implementation 'log4j:log4j:1.2.17'
+    implementation group: 'com.sikulix', name: 'sikulixapi', version: '2.0.5'
+    // https://mvnrepository.com/artifact/com.aventstack/extentreports
+    implementation group: 'com.aventstack', name: 'extentreports', version: '5.0.9'
+    
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.named('test') {
+    useTestNG() {
+        suites "./src/test/resources/suite.xml"
+    }
+}

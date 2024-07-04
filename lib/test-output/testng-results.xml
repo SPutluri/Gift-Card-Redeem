@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="8" total="9" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-07-04T11:03:40 SGT" name="Ascenda Loyalty Automation" finished-at="2024-07-04T11:04:45 SGT" duration-ms="64899">
+    <groups>
+    </groups>
+    <test started-at="2024-07-04T11:03:40 SGT" name="Test" finished-at="2024-07-04T11:04:45 SGT" duration-ms="64899">
+      <class name="tests.TestRunner">
+        <test-method is-config="true" signature="globalSetup()[pri:0, instance:tests.TestRunner@624ea235]" started-at="2024-07-04T11:03:40 SGT" name="globalSetup" finished-at="2024-07-04T11:03:40 SGT" duration-ms="117" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- globalSetup -->
+        <test-method is-config="true" signature="intitconfig()[pri:0, instance:tests.TestRunner@624ea235]" started-at="2024-07-04T11:03:40 SGT" name="intitconfig" finished-at="2024-07-04T11:03:40 SGT" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intitconfig -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.TestRunner@624ea235]" started-at="2024-07-04T11:03:40 SGT" name="setup" finished-at="2024-07-04T11:03:46 SGT" duration-ms="6239" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="initializeCreateMagicLink()[pri:0, instance:tests.TestRunner@624ea235]" started-at="2024-07-04T11:03:46 SGT" name="initializeCreateMagicLink" finished-at="2024-07-04T11:04:15 SGT" duration-ms="28955" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeCreateMagicLink -->
+        <test-method signature="launchMagicUrl()[pri:1, instance:tests.TestRunner@624ea235]" started-at="2024-07-04T11:04:15 SGT" name="launchMagicUrl" description="Create and Launch Magic Link" finished-at="2024-07-04T11:04:45 SGT" duration-ms="29140" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchMagicUrl -->
+        <test-method is-config="true" signature="wrapUp()[pri:0, instance:tests.TestRunner@624ea235]" started-at="2024-07-04T11:04:45 SGT" name="wrapUp" finished-at="2024-07-04T11:04:45 SGT" duration-ms="122" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapUp -->
+        <test-method is-config="true" signature="wrapAllUp(org.testng.ITestContext)[pri:0, instance:tests.TestRunner@624ea235]" started-at="2024-07-04T11:04:45 SGT" name="wrapAllUp" finished-at="2024-07-04T11:04:47 SGT" duration-ms="1975" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@517fb2c3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- wrapAllUp -->
+      </class> <!-- tests.TestRunner -->
+    </test> <!-- Test -->
+  </suite> <!-- Ascenda Loyalty Automation -->
+</testng-results>

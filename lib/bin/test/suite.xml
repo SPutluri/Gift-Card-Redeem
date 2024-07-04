@@ -1,0 +1,51 @@
+<!--# To run individual Test Cases -->
+ <suite name="Ascenda Loyalty Automation">
+    <test name="Test">
+        <classes>
+            <class name="tests.TestRunner">
+                <methods>
+                    <include name="launchMagicUrl"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite> 
+
+<!--# uncomment to run Whole Suit -->
+
+ <!-- <suite name="Ascenda Loyalty Automation">
+    <test name="Test">
+        <classes>
+            <class name="tests.TestRunner"/>
+        </classes>
+    </test>
+</suite> 
+
+ -->
+ 
+ 
+ <!--# uncomment to run only test cases related to specified groups -->
+ <!-- <suite name="Ascenda Loyalty Automation">
+	<test name="Smoke Tests">
+		<groups>
+			<run>
+				<include name="smoke" />
+			</run>
+		</groups>
+		<classes>
+			<class name="tests.TestRunner" />
+		</classes>
+	</test>
+
+	<test name="Regression Tests">
+		<groups>
+			<run>
+				<include name="regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="tests.TestRunner" />
+		</classes>
+	</test>
+</suite>  -->
+ 
