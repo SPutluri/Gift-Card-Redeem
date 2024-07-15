@@ -33,12 +33,12 @@ jobs:
     - name: Download ChromeDriver
       run: |
         CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
-        CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
+        CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION%.*})
         wget -q "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
         unzip chromedriver_linux64.zip -d $HOME/bin
         rm chromedriver_linux64.zip
       env:
-        PATH: ${{ runner.home }}/bin:${{ env.PATH }}
+        PATH: $HOME/bin:${{ env.PATH }}
     
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies
     - name: Setup Gradle
