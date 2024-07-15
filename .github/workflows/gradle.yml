@@ -13,23 +13,22 @@ jobs:
       contents: read
 
     steps:
-    # Check out the repository
     - uses: actions/checkout@v4
     
-    # Set up JDK 17 using the Temurin distribution
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
-    
-    # Set up Chrome (for headless testing)
+
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@v1
       with:
         install-dependencies: true
+    
+    - name: Ensure necessary tools are installed
+      run: sudo apt-get update && sudo apt-get install -y jq
 
-    # Download ChromeDriver
     - name: Download ChromeDriver
       run: |
         CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
@@ -40,19 +39,15 @@ jobs:
       env:
         PATH: $HOME/bin:${{ env.PATH }}
     
-    # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
-    # Grant execute permission for the Gradle wrapper script
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     
-    # Build the project using the Gradle wrapper
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
-    # Run tests using the Gradle wrapper
     - name: Run tests with Gradle Wrapper
       run: ./gradlew test --tests "*TestNGSuite"
 
@@ -62,16 +57,13 @@ jobs:
       contents: write
 
     steps:
-    # Check out the repository
     - uses: actions/checkout@v4
     
-    # Set up JDK 17 using the Temurin distribution
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    # Generate and submit a dependency graph, enabling Dependabot Alerts for all project dependencies
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
