@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: Java CI with Gradle and TestNG
 
 on:
   push:
@@ -23,17 +23,21 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     
-    # Set up Chrome WebDriver
-    - name: Set up Chrome WebDriver
-      uses: actions/setup-chromedriver@v1
-      with:
-        version: 'latest'
-
     # Set up Chrome (for headless testing)
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@v1
       with:
         version: 'latest'
+    
+    # Download ChromeDriver
+    - name: Download ChromeDriver
+      run: |
+        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+        wget -q "https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip"
+        unzip chromedriver_linux64.zip -d $HOME/bin
+        rm chromedriver_linux64.zip
+      env:
+        PATH: ${{ runner.home }}/bin:${{ env.PATH }}
     
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies
     - name: Setup Gradle
@@ -46,10 +50,10 @@ jobs:
     # Build the project using the Gradle wrapper
     - name: Build with Gradle Wrapper
       run: ./gradlew build
-    
+
     # Run tests using the Gradle wrapper
     - name: Run tests with Gradle Wrapper
-      run: ./gradlew test
+      run: ./gradlew test --tests "*TestNGSuite"
 
   dependency-submission:
     runs-on: ubuntu-latest
@@ -70,3 +74,30 @@ jobs:
     # Generate and submit a dependency graph, enabling Dependabot Alerts for all project dependencies
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+Explanation:
+Download ChromeDriver: This step downloads the appropriate version of ChromeDriver that matches the installed Chrome browser version and adds it to the PATH.
+google-chrome --version retrieves the installed Chrome version.
+wget downloads the ChromeDriver zip file.
+unzip extracts the ChromeDriver executable.
+The ChromeDriver is added to the PATH.
+Gradle Configuration for TestNG
+Ensure that your build.gradle is configured to use TestNG. Here’s an example of how to configure TestNG in your build.gradle file:
+
+groovy
+Copy code
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.testng:testng:7.7.1'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.10.0'
+}
+
+test {
+    useTestNG()
+}
